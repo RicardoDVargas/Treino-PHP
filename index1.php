@@ -2,16 +2,31 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo de PHP</title>
-</head>
+    <title>Exercicio 8</title>
+    <link rel="stylesheet" href="style.css">
 <body>
-    <h1>exemplo de php</h1>
-    <? 
-        date_default_timezone_set("America/Sao_Paulo"); //GMT-3
-        echo "Hoje é dia " . date("d/M/Y");
-        echo " E agora é " . date("G:i:s");
+    <?php 
+        //Capturando os dados do formulário retroalimentado
+        $valor1 = $_GET['v1']??0;
+        $valor2 = $_GET['v2']??0;
     ?>
+    <main>
+        <h1>Somador de valores</h1>
+        <form action="<?=$_SERVER['PHP_SELF'] ?>" method="get">
+        <label for="v1">Valor 1</label>
+        <input type="number" name="v1" id="v1" value="<?=$valor1?>">
+        <label for="v2">Valor 2</label>
+        <input type="number" name="v2" id="v2" value="<?=$valor2?>">
+        <input type="submit" value="Somar">
+        </form>
+    </main>
+    <section id="resultado">
+        <h2>Resultado da Soma</h2>
+        <?php 
+            $soma = $valor1 + $valor2;
+            echo "<p>O resultado dos valores $valor1 e $valor2 é igual a <b>$soma</b>.</p:";
+        ?>
+    </section>
 </body>
 </html>
